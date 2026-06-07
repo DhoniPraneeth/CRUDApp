@@ -1,13 +1,32 @@
 package com.example.CRUDApp.controller;
 
+import com.example.CRUDApp.model.Task;
+import com.example.CRUDApp.service.TaskService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-@RestController("/")
+import java.util.ArrayList;
+import java.util.List;
+
+@RestController()
+@RequestMapping("/taskApp")
 public class TaskController {
-    @GetMapping("/createTask")
-    public ResponseEntity<String> createTask(){
-
+    @Autowired
+    TaskService service;
+    @PostMapping("/create")
+    public ResponseEntity<String> createTask(@RequestBody Task task){
+        System.out.println(task);
+        Boolean check=service.createTask(task);
+        if (!check)
+            return new ResponseEntity<>("Task Not Created",HttpStatus.BAD_GATEWAY);
+        return new ResponseEntity(HttpStatus.CREATED);
+    }
+    @GetMapping("/GetTasks")
+    public ResponseEntity<List<Task>> getAllTasks(){
+        List<Task> tasks=service.getAllTasks();
+        return new ResponseEntity<>(tasks,HttpStatus.OK);
     }
 }

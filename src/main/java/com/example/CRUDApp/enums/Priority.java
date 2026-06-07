@@ -1,7 +1,7 @@
 package com.example.CRUDApp.enums;
 
 public enum Priority {
-    High,
-    Medium,
+    HIGH,
+    MEDIUM,
     Low
 }

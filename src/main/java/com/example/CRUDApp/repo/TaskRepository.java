@@ -1,7 +1,8 @@
 package com.example.CRUDApp.repo;
 
-import org.springframework.stereotype.Repository;
+import com.example.CRUDApp.model.Task;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-@Repository
-public class TaskRepository {
+public interface TaskRepository extends JpaRepository<Task,Integer> {
+
 }
