@@ -14,8 +14,7 @@ import org.hibernate.id.IncrementGenerator;
 @NoArgsConstructor
 public class Task {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private String taskCode;
     private String title;
     private String description;
     private Boolean isDone;

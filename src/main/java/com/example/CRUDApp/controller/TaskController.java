@@ -29,11 +29,19 @@ public class TaskController {
         List<Task> tasks=service.getAllTasks();
         return new ResponseEntity<>(tasks,HttpStatus.OK);
     }
+
     @PutMapping("/update")
     public ResponseEntity<String> updateTask(@RequestBody Task task){
         if(service.updateTask(task))
             return new ResponseEntity<>("Updated Task",HttpStatus.OK);
         return new ResponseEntity<>("Failed to Update",HttpStatus.BAD_GATEWAY);
     }
-
+    @DeleteMapping("/deleteById")
+    public ResponseEntity<String> deleteById(@PathVariable String taskCode){
+        if(service.deleteTask(taskCode))
+            return new ResponseEntity<>("Deleted Successfully",HttpStatus.OK);
+        return new ResponseEntity<>(
+                "Delete Failed",HttpStatus.BAD_GATEWAY
+        );
+    }
 }

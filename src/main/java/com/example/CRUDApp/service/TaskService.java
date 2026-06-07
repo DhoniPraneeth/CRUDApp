@@ -5,8 +5,8 @@ import com.example.CRUDApp.repo.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TaskService {
@@ -26,5 +26,14 @@ public class TaskService {
 
     public boolean updateTask(Task task) {
         return repo.save(task)!=null;
+    }
+
+    public boolean deleteTask(String taskCode) {
+        Optional<Task> task=repo.findById(taskCode);
+        if(task.isPresent()){
+            repo.delete(task.get());
+            return true;
+        }
+        return false;
     }
 }
