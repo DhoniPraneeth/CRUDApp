@@ -24,9 +24,16 @@ public class TaskController {
             return new ResponseEntity<>("Task Not Created",HttpStatus.BAD_GATEWAY);
         return new ResponseEntity(HttpStatus.CREATED);
     }
-    @GetMapping("/GetTasks")
+    @GetMapping("/tasks")
     public ResponseEntity<List<Task>> getAllTasks(){
         List<Task> tasks=service.getAllTasks();
         return new ResponseEntity<>(tasks,HttpStatus.OK);
     }
+    @PutMapping("/update")
+    public ResponseEntity<String> updateTask(@RequestBody Task task){
+        if(service.updateTask(task))
+            return new ResponseEntity<>("Updated Task",HttpStatus.OK);
+        return new ResponseEntity<>("Failed to Update",HttpStatus.BAD_GATEWAY);
+    }
+
 }

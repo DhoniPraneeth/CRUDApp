@@ -23,4 +23,8 @@ public class TaskService {
     public List<Task> getAllTasks() {
         return repo.findAll();
     }
+
+    public boolean updateTask(Task task) {
+        return repo.save(task)!=null;
+    }
 }
