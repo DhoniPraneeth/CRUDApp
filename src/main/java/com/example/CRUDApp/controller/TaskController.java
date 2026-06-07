@@ -36,12 +36,21 @@ public class TaskController {
             return new ResponseEntity<>("Updated Task",HttpStatus.OK);
         return new ResponseEntity<>("Failed to Update",HttpStatus.BAD_GATEWAY);
     }
-    @DeleteMapping("/deleteById")
+
+    @DeleteMapping("/deleteById{taskCode}")
     public ResponseEntity<String> deleteById(@PathVariable String taskCode){
         if(service.deleteTask(taskCode))
             return new ResponseEntity<>("Deleted Successfully",HttpStatus.OK);
         return new ResponseEntity<>(
                 "Delete Failed",HttpStatus.BAD_GATEWAY
         );
+    }
+    @GetMapping("/getById/{taskCode}")
+    public ResponseEntity<Task> getById(@PathVariable String taskCode){
+        Task t=service.getById(taskCode);
+        if(t!=null){
+            return new ResponseEntity<>(t,HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 }

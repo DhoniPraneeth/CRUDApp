@@ -36,4 +36,11 @@ public class TaskService {
         }
         return false;
     }
+
+    public Task getById(String taskCode) {
+        Optional<Task> t= repo.findById(taskCode);
+        if(t.isPresent())
+            return t.get();
+        return null;
+    }
 }
