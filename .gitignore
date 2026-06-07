@@ -1,0 +1,33 @@
+```gitignore
+# Maven target folder
+target/
+
+# IntelliJ IDEA files
+.idea/
+*.iml
+
+# Maven wrapper logs (optional)
+.mvn/wrapper/maven-wrapper.jar
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Environment/config secrets
+application.properties
+application.yml
+
+# If using local profiles
+application-local.properties
+application-dev.properties
+
+# Compiled files
+*.class
+
+# Temporary files
+*.tmp
+*.swp
+```
