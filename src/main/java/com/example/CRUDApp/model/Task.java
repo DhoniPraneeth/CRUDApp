@@ -1,5 +1,7 @@
 package com.example.CRUDApp.model;
 
+import com.example.CRUDApp.enums.Priority;
+import com.example.CRUDApp.enums.TaskStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,5 +23,4 @@ public class Task {
     private TaskStatus status;
     @Enumerated(EnumType.STRING)
     private Priority priority;
-
 }
